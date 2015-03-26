@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    if user_signed_in?
+      redirect_to :controller =>'dashboard', :action => 'index'
   end
+end
+
 
   def show
     @user = User.find(params[:id])
